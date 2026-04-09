@@ -10,10 +10,21 @@ const __dirname = path.dirname(__filename);
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss(), viteSingleFile()],
+  // 'base' deve ser o nome do seu repositório entre barras: /nome-do-repo/
+  // Se for o repositório principal (seu-usuario.github.io), use apenas '/'
+  base: "/nome-do-seu-repositorio/", 
+  plugins: [
+    react(), 
+    tailwindcss(), 
+    viteSingleFile()
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
     },
   },
+  build: {
+    // Opcional: Garante que o output seja limpo antes do build
+    emptyOutDir: true,
+  }
 });
